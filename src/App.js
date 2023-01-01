@@ -6,8 +6,8 @@ export default function App() {
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("");
 
-  const [ingredients, setIngredients] = useState("");
-  const [ingredientsSource, setIngredientsSource] = useState("");
+  const [ingredients, setIngredients] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
+  const [ingredientsSource, setIngredientsSource] = useState("www.spoonablerecipes.com");
   // const [imageUrl, setImageUrl] = useState('')
 
   useEffect(() => {
