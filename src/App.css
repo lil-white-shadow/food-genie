@@ -70,3 +70,8 @@ input:focus {
 .buttonContainer button:active {
   scale: 0.95;
 }
+
+.results {
+  width: 80%;
+  padding: 30px
+}
