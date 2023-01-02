@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import Card from "./components/Card";
+import Nav from "./components/Nav";
 
 export default function App() {
   const title = "FoodGenie";
@@ -70,10 +71,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <div ref={SearchRef} className="nav">
-        <button onClick={() => goToComponent(IngredientsRef)}>About</button>
-        <button onClick={() => goToComponent(NutritionRef)}>Contact</button>
-      </div>
+      <Nav className="nav" goToComponent={goToComponent} IngredientsRef={IngredientsRef} NutritionRef={NutritionRef}/>
       <div className="search">
         <div className="title">
           <p>{title}</p>
