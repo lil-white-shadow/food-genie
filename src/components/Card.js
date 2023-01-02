@@ -1,6 +1,6 @@
-export default function Ingredients(props) {
+export default function Card(props) {
 return (
-  <div className="article">
+  <div className="card">
     <h2>{props.title}: </h2>
     <div className="content">
       {props.content} 

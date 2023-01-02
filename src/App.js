@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
-import Ingredients from "./components/Ingredients";
+import Card from "./components/Card";
 
 export default function App() {
   const title = "FoodGenie";
@@ -16,7 +16,7 @@ export default function App() {
       setIngredients('')
       setNutrition('')
     }
-    ref.current.scrollIntoView({ behavior: 'smooth' })
+    ref.current.scrollIntoView({ behavior: 'auto' })
   }
 
 
@@ -92,7 +92,7 @@ export default function App() {
       </div>
       {ingredients.length > 0 ? (
         <div ref={IngredientsRef} className="results">
-          <Ingredients
+          <Card
             title='Ingredients'
             content={ingredients}
             contentSource={ingredientsSource}
@@ -104,7 +104,7 @@ export default function App() {
       ) : null}
       {nutrition.length > 0 ? (
         <div ref={NutritionRef} className="results">
-          <Ingredients
+          <Card
             title='Nutrition Info'
             content={ingredients}
             contentSource={ingredientsSource}
