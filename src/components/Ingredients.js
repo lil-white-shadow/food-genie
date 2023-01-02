@@ -1,16 +1,18 @@
 export default function Ingredients(props) {
 return (
-  <div>
+  <div className="ingredients">
     <h2>Ingredients: </h2>
-    <div>
+    <div className="sentence">
       {props.ingredients} 
-      &nbsp;&nbsp;
       <a href={props.ingredientsSource}>Read more</a>
-      <br />
-      <p className="source">
+    </div>
+    <div>
+    </div>
+    <div className="source">
+      <p>
       [Source: {props.ingredientsSource.substring(0, props.ingredientsSource.indexOf("com") + 3)}]
       </p>
-    </div>
+    </div> 
   </div>
 )
 }

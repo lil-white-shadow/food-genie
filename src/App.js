@@ -15,6 +15,9 @@ export default function App() {
 
 
   const [ingredients, setIngredients] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
+
+  // const [ingredients, setIngredients] = useState("");
+
   const [ingredientsSource, setIngredientsSource] = useState("www.spoonablerecipes.com");
   // const [imageUrl, setImageUrl] = useState('')
 
@@ -31,13 +34,21 @@ export default function App() {
         .then((response) => {
           let snippet = response.items[0].snippet;
           let source = response.items[0].formattedUrl;
+          console.log(source)
           // let imageUrl = response.items[0].formattedUrl
           setIngredients(snippet);
           setIngredientsSource(source);
           // setImageUrl
-        });
+        })
+        .then(() => {
+          console.log('in last .then')
+          setInput("");
+          console.log('before execute scroll')
+          setTimeout(() => 
+          executeScroll()
+          , 0)
+        })
     }
-    console.log(ingredients);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
@@ -46,9 +57,7 @@ export default function App() {
   }
 
   function handleSubmit() {
-    setSearch(input);
-    setInput("");
-    executeScroll();
+    setSearch(input)
   }
 
   return (
@@ -70,9 +79,13 @@ export default function App() {
           <button onClick={executeScroll}>Surpise Me!</button>
         </div>
       </div>
-      <div ref={IngredientsRef} className="results">
+      {
+        ingredients.length > 0 ?
+        <div ref={IngredientsRef} className="results">
         <Ingredients ingredients={ingredients} ingredientsSource={ingredientsSource}/>
       </div>
+      : null
+      }
     </div>
   );
 }
@@ -85,5 +98,6 @@ Components
 4. Nutrition - nutrition info card
 5. Near me - google map results for restaurants or stores
 
--> hide api keys 
+- hide api keys 
+- add home, about, contact us
 */
