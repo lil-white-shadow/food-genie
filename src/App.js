@@ -12,6 +12,10 @@ export default function App() {
   const NutritionRef = useRef()
     
   function goToComponent(ref) {
+    if(ref === SearchRef) {
+      setIngredients('')
+      setNutrition('')
+    }
     ref.current.scrollIntoView({ behavior: 'smooth' })
   }
 
