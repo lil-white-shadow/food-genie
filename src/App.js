@@ -70,7 +70,11 @@ export default function App() {
 
   return (
     <div className="app">
-      <div ref={SearchRef} className="search">
+      <div ref={SearchRef} className="nav">
+        <button onClick={() => goToComponent(IngredientsRef)}>About</button>
+        <button onClick={() => goToComponent(NutritionRef)}>Contact</button>
+      </div>
+      <div className="search">
         <div className="title">
           <p>{title}</p>
           <div className="bulb"></div>
