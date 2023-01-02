@@ -63,7 +63,7 @@ input:focus {
   border: 1px solid yellow;
 }
 
-.buttonContainer button {
+button {
   margin: 15px 10px;
   padding: 5px 10px;
   background-color: black;
@@ -85,15 +85,13 @@ input:focus {
   width: 80%;
   padding: 10vh 10vw;
   height: 100vh;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0 auto;
 }
 
-.ingredients {
+.article {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  /* justify-content: space-between; */
 }
 
 .source {
@@ -102,7 +100,7 @@ input:focus {
   color: gray;
 }
 
-.sentence {
+.content {
   display: flex;
   flex-direction: column;
   font-size: 2rem;

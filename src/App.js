@@ -7,14 +7,18 @@ export default function App() {
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("");
 
+  const SearchRef = useRef()
   const IngredientsRef = useRef()
-  
-  function executeScroll() {
-    IngredientsRef.current.scrollIntoView({ behavior: 'smooth' })
+  const NutritionRef = useRef()
+    
+  function goToComponent(ref) {
+    ref.current.scrollIntoView({ behavior: 'smooth' })
   }
 
 
   const [ingredients, setIngredients] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
+
+  const [nutrition, setNutrition] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
 
   // const [ingredients, setIngredients] = useState("");
 
@@ -45,7 +49,7 @@ export default function App() {
           setInput("");
           console.log('before execute scroll')
           setTimeout(() => 
-          executeScroll()
+          goToComponent(IngredientsRef)
           , 0)
         })
     }
@@ -62,7 +66,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <div className="search">
+      <div ref={SearchRef} className="search">
         <div className="title">
           <p>{title}</p>
           <div className="bulb"></div>
@@ -73,19 +77,34 @@ export default function App() {
           value={input}
         />
         <div className="buttonContainer">
-          <button type="submit" onClick={handleSubmit}>
-            Search
-          </button>
-          <button onClick={executeScroll}>Surpise Me!</button>
+          <button onClick={handleSubmit}>Search</button>
+          <button onClick={() => goToComponent(IngredientsRef)}>Ingredients</button>
+          <button onClick={() => goToComponent(NutritionRef)}>Nutrition Info</button>
         </div>
       </div>
-      {
-        ingredients.length > 0 ?
+      {ingredients.length > 0 ? (
         <div ref={IngredientsRef} className="results">
-        <Ingredients ingredients={ingredients} ingredientsSource={ingredientsSource}/>
-      </div>
-      : null
-      }
+          <Ingredients
+            title='Ingredients'
+            content={ingredients}
+            contentSource={ingredientsSource}
+          />
+          <button onClick={() => goToComponent(SearchRef)}>New search</button>
+          <button onClick={() => goToComponent(NutritionRef)}>Nutrition Info</button>
+
+        </div>
+      ) : null}
+      {nutrition.length > 0 ? (
+        <div ref={NutritionRef} className="results">
+          <Ingredients
+            title='Nutrition Info'
+            content={ingredients}
+            contentSource={ingredientsSource}
+          />
+          <button onClick={() => goToComponent(SearchRef)}>New search</button>
+          <button onClick={() => goToComponent(IngredientsRef)}>Ingredients</button>
+        </div>
+      ) : null}
     </div>
   );
 }
