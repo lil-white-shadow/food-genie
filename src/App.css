@@ -4,6 +4,15 @@
 
 .app {
   background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  background-color: black;
   height: 100vh;
   color: white;
   display: flex;
@@ -74,4 +83,14 @@ input:focus {
 .results {
   width: 80%;
   padding: 30px
+}
+
+.source {
+  font-size: 90%;
+  color: gray;
+}
+
+.results {
+  /* border: 3px solid yellow; */
+  height: 100vh;
 }

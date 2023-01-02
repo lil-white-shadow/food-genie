@@ -1,10 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./App.css";
+import Ingredients from "./components/Ingredients";
 
 export default function App() {
   const title = "FoodGenie";
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("");
+
+  const IngredientsRef = useRef()
+  
+  function executeScroll() {
+    IngredientsRef.current.scrollIntoView({ behavior: 'smooth' })
+  }
+
 
   const [ingredients, setIngredients] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
   const [ingredientsSource, setIngredientsSource] = useState("www.spoonablerecipes.com");
@@ -40,41 +48,30 @@ export default function App() {
   function handleSubmit() {
     setSearch(input);
     setInput("");
+    executeScroll();
   }
 
   return (
     <div className="app">
-      <div className="title">
-        <p>{title}</p>
-        <div className="bulb"></div>
+      <div className="search">
+        <div className="title">
+          <p>{title}</p>
+          <div className="bulb"></div>
+        </div>
+        <input
+          type="text"
+          onChange={(event) => handleInput(event)}
+          value={input}
+        />
+        <div className="buttonContainer">
+          <button type="submit" onClick={handleSubmit}>
+            Search
+          </button>
+          <button onClick={executeScroll}>Surpise Me!</button>
+        </div>
       </div>
-      <input
-        type="text"
-        onChange={(event) => handleInput(event)}
-        value={input}
-      />
-      <div className="buttonContainer">
-        <button type="submit" onClick={handleSubmit}>
-          Search
-        </button>
-        <button>Surpise Me!</button>
-      </div>
-      <div className="results">
-        {input !== "" ? <p>Input: {input}</p> : <p>Input: </p>}
-        {search !== "" ? <p>Search: {search}</p> : <p>Search: </p>}
-        {ingredients !== "" ? (
-          <p>
-            Ingredients: {ingredients} <a href={ingredientsSource}>Read more</a>
-            [Source:{" "}
-            {ingredientsSource.substring(
-              8,
-              ingredientsSource.indexOf("com") + 3
-            )}
-            ]
-          </p>
-        ) : (
-          <p>Ingredients: </p>
-        )}
+      <div ref={IngredientsRef} className="results">
+        <Ingredients ingredients={ingredients} ingredientsSource={ingredientsSource}/>
       </div>
     </div>
   );
@@ -87,4 +84,6 @@ Components
 3. Ingredients - ingredients card
 4. Nutrition - nutrition info card
 5. Near me - google map results for restaurants or stores
+
+-> hide api keys 
 */
