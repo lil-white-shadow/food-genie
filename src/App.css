@@ -30,7 +30,10 @@ button {
 
 .nav button:hover {
   color: yellow;
-  /* background-color: black; */
+}
+
+.nav button:active {
+  background-color: transparent;
 }
 
 .search {
@@ -47,7 +50,6 @@ button {
 .title {
   display: inherit;
   font-size: 5rem;
-  /* padding: 5vh 8vh; */
   align-self: center;
   position: relative;
   top: -10vh;
