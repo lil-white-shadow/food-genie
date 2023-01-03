@@ -127,7 +127,7 @@ button {
   justify-content: space-around;
   margin: 0 auto;
   position: relative;
-  top: 300px;
+  top: 400px;
 }
 
 @media (max-width: 767px) {
