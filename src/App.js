@@ -17,7 +17,7 @@ export default function App() {
       setIngredients('')
       setNutrition('')
     }
-    ref.current.scrollIntoView({ behavior: 'auto' })
+    ref.current.scrollIntoView({ behavior: 'smooth' })
   }
 
 
@@ -28,6 +28,7 @@ export default function App() {
   // const [ingredients, setIngredients] = useState("");
 
   const [ingredientsSource, setIngredientsSource] = useState("www.spoonablerecipes.com");
+  // const [ingredientsSource, setIngredientsSource] = useState("")
   // const [imageUrl, setImageUrl] = useState('')
 
   useEffect(() => {
@@ -71,11 +72,11 @@ export default function App() {
 
   return (
     <div className="app">
-      <Nav className="nav" goToComponent={goToComponent} IngredientsRef={IngredientsRef} NutritionRef={NutritionRef}/>
+      <Nav className="nav" search={search} goToComponent={goToComponent} IngredientsRef={IngredientsRef} NutritionRef={NutritionRef}/>
       <div className="search">
         <div className="title">
           <p>{title}</p>
-          <div className="bulb"></div>
+          {/* <div className="bulb"></div> */}
         </div>
         <input
           type="text"
@@ -92,6 +93,7 @@ export default function App() {
         <div ref={IngredientsRef} className="results">
           <Card
             title='Ingredients'
+            search={search}
             content={ingredients}
             contentSource={ingredientsSource}
           />
