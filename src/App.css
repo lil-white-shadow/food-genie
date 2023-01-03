@@ -206,18 +206,19 @@ button {
 .card form p {
   display: flex;
   flex-direction: column;
-  gap: 10px
+  gap: 10px;
+  margin: 10px;
 }
 
 .card form input {
   border-radius: 0;
-  width: 100%;
+  width: min(100%, 500px);
   padding-left: 10px;
   color: white;
 }
 
 .card form textarea {
-  width: 100%;
+  width: min(100%, 500px);
   height: 200px;
   font-size: 1.5rem;
   padding: 10px;
@@ -233,5 +234,5 @@ button {
 }
 .card form button {
   width: min(50%, 150px);
-  margin: 0;
+  margin: 20px 10px;
 }
