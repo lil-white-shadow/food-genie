@@ -3,6 +3,7 @@ import "./App.css";
 import Card from "./components/Card";
 import Nav from "./components/Nav";
 import About from './components/About'
+import Contact from './components/Contact'
 
 export default function App() {
   const title = "FoodGenie";
@@ -13,7 +14,8 @@ export default function App() {
   const IngredientsRef = useRef()
   const NutritionRef = useRef()
   const AboutRef = useRef()
-    
+  const ContactRef = useRef()
+
   function goToComponent(ref) {
     console.log(ref)
     if(ref === SearchRef) {
@@ -75,7 +77,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Nav className="nav" search={search} goToComponent={goToComponent} AboutRef={AboutRef} NutritionRef={NutritionRef}/>
+      <Nav className="nav" search={search} goToComponent={goToComponent} AboutRef={AboutRef} ContactRef={ContactRef}/>
       <div className="search">
         <div className="title">
           <p>{title}</p>
@@ -118,6 +120,9 @@ export default function App() {
       ) : null}
       <div ref={AboutRef} className="results">
         <About />
+      </div>
+      <div ref={ContactRef} className="results">
+        <Contact />
       </div>
     </div>
   );
