@@ -3,7 +3,7 @@ return (
   <div className="card">
     <div className="cardTitle">{props.title}: </div>
     <div className="cardContent">
-      <p>{props.content}</p>
+      {props.content}
     </div>
     <div className="cardSource">
       <p>
