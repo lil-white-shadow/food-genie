@@ -34,24 +34,29 @@ export default function App() {
   // const [ingredients, setIngredients] = useState("");
 
   useEffect(() => {
-    let key = "rO88pi0us05QoIvMAigT0J7ZWLUiSDKdeq1owQac";
-
-    let endpoint =
-      "https://api.nal.usda.gov/fdc/v1/foods/search?" +
-      "api_key=" +
-      key + 
-      "&query=" +
-      search +
-      "&dataType=Branded,Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=1"
-
-      console.log(endpoint);
     if (search !== "") {
+      let key = "rO88pi0us05QoIvMAigT0J7ZWLUiSDKdeq1owQac";
+  
+      let endpoint =
+        "https://api.nal.usda.gov/fdc/v1/foods/search?" +
+        "api_key=" +
+        key + 
+        "&query=" +
+        search +
+        "&dataType=Branded,Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=1"
+  
+      console.log(endpoint);
+
       fetch(endpoint)
         .then((response) => response.json())
         // .then(response => console.log(response.foods[0].ingredients))
         .then((response) => {
-          let receivedIngredients = response.foods[0].ingredients;
-          setIngredients(receivedIngredients);
+          if(response.foods[0].ingredients) {
+            let receivedIngredients = response.foods[0].ingredients;
+            setIngredients(receivedIngredients);
+          } else {
+            setIngredients("Oops! We were not able to find ingredients for " + search + ". Please try searching another item.")
+          }
         })
         .then(() => {
           setTimeout(() => 
