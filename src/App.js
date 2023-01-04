@@ -98,10 +98,9 @@ export default function App() {
   return (
     <div className="app">
       <Nav className="nav" search={search} goToComponent={goToComponent} AboutRef={AboutRef} ContactRef={ContactRef}/>
-      <div className="search">
+      <div ref={SearchRef} className="search">
         <div className="title">
           <p>{title}</p>
-          {/* <div className="bulb"></div> */}
         </div>
         <div className="inputContainer">
           <input
@@ -117,8 +116,7 @@ export default function App() {
         }
         <div className="buttonContainer">
           <button onClick={handleSubmit} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Search</button>
-          <button onClick={() => goToComponent(IngredientsRef)} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Ingredients</button>
-          <button onClick={() => goToComponent(NutritionRef)} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Nutrition Info</button>
+          <button onClick={() => goToComponent(IngredientsRef)} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>I'm feeling hungry!</button>
         </div>
       </div>
       {ingredients.length > 0 ? (
@@ -130,7 +128,7 @@ export default function App() {
             contentSource={source}
           />
           <button onClick={() => goToComponent(SearchRef)}>New search</button>
-          <button onClick={() => goToComponent(NutritionRef)}>Nutrition Info</button>
+          <button onClick={() => goToComponent(NutritionRef)}>See Nutrition</button>
 
         </div>
       ) : null}
@@ -142,7 +140,7 @@ export default function App() {
             contentSource={source}
           />
           <button onClick={() => goToComponent(SearchRef)}>New search</button>
-          <button onClick={() => goToComponent(IngredientsRef)}>Ingredients</button>
+          <button onClick={() => goToComponent(IngredientsRef)}>See Ingredients</button>
         </div>
       ) : null}
       <div ref={AboutRef} className="results">
