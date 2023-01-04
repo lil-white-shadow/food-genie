@@ -122,6 +122,18 @@ button {
   font-size: min(1.5rem, 5vw);
 }
 
+.buttonContainer button.disabled:hover {
+  cursor: not-allowed;
+  background-color: red;
+}
+
+.buttonContainer button.disabled:active {
+  scale: none;
+  background-color: red;
+  animation-name: buttonShake;
+  animation-duration: 2s;
+}
+
 .buttonContainer button:hover, button:active {
   background-color: yellow;
   color: black;

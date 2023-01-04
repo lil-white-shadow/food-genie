@@ -11,7 +11,9 @@ export default function App() {
 
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("");
-
+  const [ingredients, setIngredients] = useState("");
+  const [nutrition, setNutrition] = useState("");
+  
   const SearchRef = useRef()
   const IngredientsRef = useRef()
   const NutritionRef = useRef()
@@ -26,11 +28,6 @@ export default function App() {
     ref.current.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const [ingredients, setIngredients] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
-
-  const [nutrition, setNutrition] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
-
-  // const [ingredients, setIngredients] = useState("");
 
   useEffect(() => {
     if (search !== "") {
@@ -46,7 +43,6 @@ export default function App() {
   
       fetch(endpoint)
         .then((response) => response.json())
-        // .then(response => console.log(response.foods[0].ingredients))
         .then((response) => {
           if(response.foods[0].ingredients) {
             let receivedIngredients = response.foods[0].ingredients;
@@ -98,9 +94,9 @@ export default function App() {
           value={input}
         />
         <div className="buttonContainer">
-          <button onClick={handleSubmit}>Search</button>
-          <button onClick={() => goToComponent(IngredientsRef)}>Ingredients</button>
-          <button onClick={() => goToComponent(NutritionRef)}>Nutrition Info</button>
+          <button onClick={handleSubmit} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Search</button>
+          <button onClick={() => goToComponent(IngredientsRef)} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Ingredients</button>
+          <button onClick={() => goToComponent(NutritionRef)} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Nutrition Info</button>
         </div>
       </div>
       {ingredients.length > 0 ? (
