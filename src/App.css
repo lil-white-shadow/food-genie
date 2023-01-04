@@ -37,6 +37,8 @@ body {
   text-decoration: none;
   font-size: min(2rem, 7.5vw);
   padding: 0;
+  font-weight: 600;
+  text-shadow: 0 1px yellow;
 }
 
 button {
@@ -81,6 +83,8 @@ button {
   gap: 1rem;
   margin-bottom: 0;
   padding-bottom: 0;
+  font-weight: 600;
+  text-shadow: 0 2px yellow;
 }
 
 .bulb {
@@ -132,18 +136,21 @@ input:focus {
   padding: 5px 10px;
   border: 1px solid;
   font-size: min(1.5rem, 5vw);
+  box-shadow: 3px 3px 2px 0 yellow;
 }
 
 .buttonContainer button.disabled:hover {
   cursor: not-allowed;
-  background-color: red;
+  color: white;
+  background-color: transparent;
+  box-shadow: 3px 3px 2px 0 red;
 }
 
 .buttonContainer button.disabled:active {
   scale: none;
-  background-color: red;
-  animation-name: buttonShake;
-  animation-duration: 2s;
+  color: white;
+  background-color: transparent;
+  box-shadow: 3px 3px 2px 0 red;
 }
 
 .buttonContainer button:hover, button:active {
@@ -151,8 +158,9 @@ input:focus {
   color: black;
 }
 
-.buttonContainer button:active {
-  scale: 0.95;
+button:active {
+  /* scale: 0.95; */
+  box-shadow: none;
 }
 
 .results {
@@ -200,6 +208,15 @@ input:focus {
   .buttonContainer button {
     margin: 10px;
   }
+
+ .buttonContainer button.disabled:active {
+    box-shadow: 3px 3px 2px 0 red;
+  }
+
+  .buttonContainer button:hover, button:active {
+    background-color: transparent;
+    color: white;
+  }
   
   .results {
     margin-top: 20vh;
@@ -234,8 +251,11 @@ input:focus {
 }
 
 .cardTitle {
-  font-size: min(1.5rem, 5vw);
+  font-size: min(3rem, 10vw);
   color: yellow;
+  opacity: 70%;
+  font-weight: 100;
+  text-shadow: 0.5px 0.5px white;
 }
 
 .card form {
