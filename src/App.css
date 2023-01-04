@@ -19,7 +19,7 @@ body {
 
 .nav {
   width: 100%;
-  padding: 0 10%;
+  padding: 0 10vw;
   height: 10vh;
   display: flex;
   justify-content: flex-end;
@@ -36,6 +36,7 @@ body {
   left: 10%;
   text-decoration: none;
   font-size: min(2rem, 7.5vw);
+  padding: 0;
 }
 
 button {
@@ -48,7 +49,7 @@ button {
   border: none;
   text-decoration: underline;
   cursor: pointer;
-  padding: 0 10px;
+  padding: 0 0 0 20px;
   font-size: min(1.5rem, 5vw);
 }
 
@@ -69,13 +70,14 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: -10vh;
 }
 
 .title {
   display: flex;
   font-size: min(10vw, 5rem);
   position: relative;
-  /* top: -15vh; */
   gap: 1rem;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -155,8 +157,8 @@ input:focus {
 
 .results {
   background-color: #202124;
-  width: 100vw;
-  padding: 10vh 10vw;
+  width: 100%;
+  padding: 20vh 10vw;
   min-height: 100vh;
   justify-content: space-around;
   margin: 0 auto;
@@ -172,9 +174,15 @@ input:focus {
   .nav {
     width: 100vw;
     height: 10vh;
+    padding: 20px;
+  }
+
+  .nav button.logo {
+    margin-left: 0;
+    left: 5%;
   }
   .nav button {
-    margin-left: 0;
+    margin-left: 20px;
     padding-left: 0;
   }
 
@@ -221,12 +229,13 @@ input:focus {
 .cardContent {
   display: flex;
   flex-direction: column;
-  font-size: min(8vw, 2rem);
+  font-size: min(1.5rem, 5vw);
   line-height: min(10vw, 2.5rem);
 }
 
 .cardTitle {
-  font-size: min(10vw, 4rem);
+  font-size: min(1.5rem, 5vw);
+  color: yellow;
 }
 
 .card form {

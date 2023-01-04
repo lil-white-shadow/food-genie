@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Contact() {
+export default function Contact(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -18,7 +18,7 @@ export default function Contact() {
   }
   return (
   <div className="card">
-    <div className="cardTitle">Contact Food Genie</div>
+    <div className="cardTitle">Contact {props.title}</div>
     <div className="cardContent">
       <p>Stay in touch. Fill out below details and we will reach out to you with a response.</p>
       <form onSubmit={onSubmit} noValidate>

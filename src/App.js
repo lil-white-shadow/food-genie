@@ -51,7 +51,7 @@ export default function App() {
             setInputError(false);
 
             if(response.foods[0].ingredients) {
-              let receivedIngredients = response.foods[0].ingredients;
+              let receivedIngredients = response.foods[0].ingredients.toLowerCase();
               setIngredients(receivedIngredients);
             } else {
               setIngredients("Oops! We were not able to find ingredients for " + search + ". Please try searching another item.")
@@ -124,7 +124,7 @@ export default function App() {
       {ingredients.length > 0 ? (
         <div ref={IngredientsRef} className="results">
           <Card
-            title='Ingredients'
+            title='INGREDIENTS'
             search={search}
             content={ingredients}
             contentSource={source}
@@ -137,7 +137,7 @@ export default function App() {
       {nutrition.length > 0 ? (
         <div ref={NutritionRef} className="results">
           <Card
-            title='Nutrition Info'
+            title='NUTRITION'
             content={nutrition}
             contentSource={source}
           />
@@ -146,10 +146,10 @@ export default function App() {
         </div>
       ) : null}
       <div ref={AboutRef} className="results">
-        <About />
+        <About title={title}/>
       </div>
       <div ref={ContactRef} className="results">
-        <Contact />
+        <Contact title={title}/>
       </div>
     </div>
   );
