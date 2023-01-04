@@ -103,11 +103,13 @@ export default function App() {
           <p>{title}</p>
           {/* <div className="bulb"></div> */}
         </div>
-        <input
-          type="text"
-          onChange={(event) => handleInput(event)}
-          value={input}
-        />
+        <div className="inputContainer">
+          <input
+            type="text"
+            onChange={(event) => handleInput(event)}
+            value={input}
+          />
+        </div>
         {
           inputError ? 
           <p className="inputErrorMessage">Please check spelling or try searching a different item.</p>
