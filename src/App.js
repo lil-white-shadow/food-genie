@@ -77,7 +77,8 @@ export default function App() {
   }
 
   function handleSubmit() {
-    setSearch(input)
+    setSearch(input);
+    setInput('');
   }
 
   return (
