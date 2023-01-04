@@ -12,13 +12,14 @@ return (
       </p>
       : <p>{props.content}</p>
     }
-      <a href={props.contentSource}>Read more</a>
     </div>
     <div>
     </div>
     <div className="cardSource">
       <p>
-      Source: {props.contentSource.substring(0, props.contentSource.indexOf("com") + 3)}
+      Source: {
+        <a href="https://fdc.nal.usda.gov/fdc-app.html#/">{props.contentSource}</a>
+      }
       </p>
     </div>
   </div>
