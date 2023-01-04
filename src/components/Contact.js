@@ -20,7 +20,7 @@ export default function Contact() {
   <div className="card">
     <div className="cardTitle">Contact Food Genie</div>
     <div className="cardContent">
-      <p>Please fill out below information and we will get back to you.</p>
+      <p>Stay in touch. Fill out below details and we will reach out to you with a response.</p>
       <form onSubmit={onSubmit} noValidate>
         <p>
           <label htmlFor="name">Name</label>
