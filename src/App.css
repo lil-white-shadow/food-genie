@@ -188,11 +188,11 @@ button {
 
 .cardSource {
   display: flex;
-  font-size: min(4vw, 1.5rem);
+  font-size: min(5vw, 1.5rem);
 }
 
 .cardSource a {
-  font-size: min(6vw, 1.5rem);
+  font-size: min(5vw, 1.5rem);
   color: yellow;
 }
 

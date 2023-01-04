@@ -7,7 +7,7 @@ import Contact from './components/Contact'
 
 export default function App() {
   const title = "FoodGenie";
-  const source = "U.S. Department of Agriculture";
+  const source = "U.S. Dept. of Agriculture";
 
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("");
