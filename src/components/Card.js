@@ -1,5 +1,4 @@
 export default function Card(props) {
-  console.log(window.innerWidth)
 return (
   <div className="card">
     <div className="cardTitle">{props.title}: </div>
