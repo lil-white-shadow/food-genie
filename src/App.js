@@ -13,6 +13,7 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [nutrition, setNutrition] = useState("");
+  const [inputError, setInputError] = useState(false);
   
   const SearchRef = useRef()
   const IngredientsRef = useRef()
@@ -25,7 +26,9 @@ export default function App() {
       setIngredients('')
       setNutrition('')
     }
-    ref.current.scrollIntoView({ behavior: 'smooth' })
+    if(!inputError && ref.current !== undefined) {
+      ref.current.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
 
@@ -44,13 +47,16 @@ export default function App() {
       fetch(endpoint)
         .then((response) => response.json())
         .then((response) => {
-          if(response.foods[0].ingredients) {
-            let receivedIngredients = response.foods[0].ingredients;
-            setIngredients(receivedIngredients);
-          } else {
-            setIngredients("Oops! We were not able to find ingredients for " + search + ". Please try searching another item.")
-          }
-          if(response.foods[0].foodNutrients) {
+          if(response.totalHits > 0) {
+            setInputError(false);
+
+            if(response.foods[0].ingredients) {
+              let receivedIngredients = response.foods[0].ingredients;
+              setIngredients(receivedIngredients);
+            } else {
+              setIngredients("Oops! We were not able to find ingredients for " + search + ". Please try searching another item.")
+            }
+            if(response.foods[0].foodNutrients) {
             let receivedNutrition = response.foods[0].foodNutrients;
             setNutrition(receivedNutrition.map(nutrient => 
               (
@@ -58,15 +64,22 @@ export default function App() {
                   {nutrient.nutrientName + ": " + nutrient.value + " " + nutrient.unitName.toLowerCase()}
                 </div>
               )
-            ));
+              ));
+            } else {
+              setNutrition("Oops! We were not able to find nutrition information for " + search + ". Please try searching another item.")
+            }
           } else {
-            setNutrition("Oops! We were not able to find nutrition information for " + search + ". Please try searching another item.")
+            setInputError(true);
+            setIngredients('');
+            setNutrition('');
           }
         })
         .then(() => {
-          setTimeout(() => 
-          goToComponent(IngredientsRef)
-          , 0)
+            if(!inputError) {
+              setTimeout(() => 
+                goToComponent(IngredientsRef)
+              , 0)
+            }
         })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,6 +87,7 @@ export default function App() {
 
   function handleInput(event) {
     setInput(event.target.value);
+    setInputError(false);
   }
 
   function handleSubmit() {
@@ -94,6 +108,11 @@ export default function App() {
           onChange={(event) => handleInput(event)}
           value={input}
         />
+        {
+          inputError ? 
+          <p className="inputErrorMessage">Please check spelling or try searching a different item.</p>
+          : null
+        }
         <div className="buttonContainer">
           <button onClick={handleSubmit} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Search</button>
           <button onClick={() => goToComponent(IngredientsRef)} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Ingredients</button>

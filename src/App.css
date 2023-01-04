@@ -97,20 +97,15 @@ input {
   background-color: transparent;
 }
 
-.search input {
-  position: relative;
-  top: -100px;
-}
-
 input:focus {
   outline: none;
   color: white;
   border: 1px solid yellow;
 }
 
-.buttonContainer {
-  position: relative;
-  top: -80px;
+.inputErrorMessage {
+  color: red;
+  font-size: 1rem;
 }
 
 button {
