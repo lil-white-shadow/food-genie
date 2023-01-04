@@ -188,8 +188,12 @@ button {
 
 .cardSource {
   display: flex;
-  font-size: min(6vw, 2rem);
-  color: gray;
+  font-size: min(4vw, 1.5rem);
+}
+
+.cardSource a {
+  font-size: min(6vw, 1.5rem);
+  color: yellow;
 }
 
 .cardContent {
@@ -201,11 +205,6 @@ button {
 
 .cardTitle {
   font-size: min(10vw, 4rem);
-}
-
-.card a {
-  font-size: min(8vw, 2rem);
-  color: yellow
 }
 
 .card form {

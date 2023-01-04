@@ -7,6 +7,8 @@ import Contact from './components/Contact'
 
 export default function App() {
   const title = "FoodGenie";
+  const source = "U.S. Department of Agriculture";
+
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("");
 
@@ -25,40 +27,33 @@ export default function App() {
     ref.current.scrollIntoView({ behavior: 'smooth' })
   }
 
-
   const [ingredients, setIngredients] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
 
   const [nutrition, setNutrition] = useState("The most common ingredients in pasta dishes are garlic and olive oil. Onion, angel hair pasta, parmesan cheese, parsley and tomatoes are also common ingredients ...");
 
   // const [ingredients, setIngredients] = useState("");
 
-  const [ingredientsSource, setIngredientsSource] = useState("www.spoonablerecipes.com");
-  // const [ingredientsSource, setIngredientsSource] = useState("")
-  // const [imageUrl, setImageUrl] = useState('')
-
   useEffect(() => {
-    let key = "AIzaSyBovUDUlWQu_lLCsJHNFQC5AnUJT3vrUdg";
-    let url =
-      "https://www.googleapis.com/customsearch/v1?key=" +
-      key +
-      "&cx=f2a2aa6d87dfc4e07&q=";
+    let key = "rO88pi0us05QoIvMAigT0J7ZWLUiSDKdeq1owQac";
+
+    let endpoint =
+      "https://api.nal.usda.gov/fdc/v1/foods/search?" +
+      "api_key=" +
+      key + 
+      "&query=" +
+      search +
+      "&dataType=Branded,Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=1"
+
+      console.log(endpoint);
     if (search !== "") {
-      fetch(url + search + "&num=1")
+      fetch(endpoint)
         .then((response) => response.json())
-        // .then(response => console.log(response))
+        // .then(response => console.log(response.foods[0].ingredients))
         .then((response) => {
-          let snippet = response.items[0].snippet;
-          let source = response.items[0].formattedUrl;
-          console.log(source)
-          // let imageUrl = response.items[0].formattedUrl
-          setIngredients(snippet);
-          setIngredientsSource(source);
-          // setImageUrl
+          let receivedIngredients = response.foods[0].ingredients;
+          setIngredients(receivedIngredients);
         })
         .then(() => {
-          console.log('in last .then')
-          setInput("");
-          console.log('before execute scroll')
           setTimeout(() => 
           goToComponent(IngredientsRef)
           , 0)
@@ -100,7 +95,7 @@ export default function App() {
             title='Ingredients'
             search={search}
             content={ingredients}
-            contentSource={ingredientsSource}
+            contentSource={source}
           />
           <button onClick={() => goToComponent(SearchRef)}>New search</button>
           <button onClick={() => goToComponent(NutritionRef)}>Nutrition Info</button>
@@ -112,7 +107,7 @@ export default function App() {
           <Card
             title='Nutrition Info'
             content={ingredients}
-            contentSource={ingredientsSource}
+            contentSource={source}
           />
           <button onClick={() => goToComponent(SearchRef)}>New search</button>
           <button onClick={() => goToComponent(IngredientsRef)}>Ingredients</button>
