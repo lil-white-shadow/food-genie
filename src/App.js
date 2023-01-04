@@ -19,7 +19,6 @@ export default function App() {
   const ContactRef = useRef()
 
   function goToComponent(ref) {
-    console.log(ref)
     if(ref === SearchRef) {
       setIngredients('')
       setNutrition('')
@@ -45,8 +44,6 @@ export default function App() {
         search +
         "&dataType=Branded,Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=1"
   
-      console.log(endpoint);
-
       fetch(endpoint)
         .then((response) => response.json())
         // .then(response => console.log(response.foods[0].ingredients))
@@ -56,6 +53,18 @@ export default function App() {
             setIngredients(receivedIngredients);
           } else {
             setIngredients("Oops! We were not able to find ingredients for " + search + ". Please try searching another item.")
+          }
+          if(response.foods[0].foodNutrients) {
+            let receivedNutrition = response.foods[0].foodNutrients;
+            setNutrition(receivedNutrition.map(nutrient => 
+              (
+                <div key={nutrient.nutrientName}>
+                  {nutrient.nutrientName + ": " + nutrient.value + " " + nutrient.unitName.toLowerCase()}
+                </div>
+              )
+            ));
+          } else {
+            setNutrition("Oops! We were not able to find nutrition information for " + search + ". Please try searching another item.")
           }
         })
         .then(() => {
@@ -111,7 +120,7 @@ export default function App() {
         <div ref={NutritionRef} className="results">
           <Card
             title='Nutrition Info'
-            content={ingredients}
+            content={nutrition}
             contentSource={source}
           />
           <button onClick={() => goToComponent(SearchRef)}>New search</button>
