@@ -132,7 +132,7 @@ export default function App() {
             content={ingredients}
             contentSource={source}
           />
-          <button onClick={() => goToComponent(SearchRef)}>New search</button>
+          <button onClick={() => goToComponent(SearchRef)}>Return to search</button>
           <button onClick={() => goToComponent(NutritionRef)}>See Nutrition</button>
 
         </div>
@@ -144,15 +144,17 @@ export default function App() {
             content={nutrition}
             contentSource={source}
           />
-          <button onClick={() => goToComponent(SearchRef)}>New search</button>
+          <button onClick={() => goToComponent(SearchRef)}>Return to search</button>
           <button onClick={() => goToComponent(IngredientsRef)}>See Ingredients</button>
         </div>
       ) : null}
       <div ref={AboutRef} className="results">
         <About title={title}/>
+        <button onClick={() => goToComponent(SearchRef)}>Return to search</button>
       </div>
       <div ref={ContactRef} className="results">
         <Contact title={title}/>
+        <button onClick={() => goToComponent(SearchRef)}>Return to search</button>
       </div>
     </div>
   );
