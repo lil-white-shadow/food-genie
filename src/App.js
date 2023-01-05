@@ -161,11 +161,8 @@ export default function App() {
 }
 
 /* 
-To-do before publishing:
-- hide api keys 
-
 Future additions:
-- Near me - google map results for restaurants or stores
 - Routing for Results, About, Contact
+- Near me - google map results for restaurants or stores
 - Clip content for mobile with "Read more..."
 */
