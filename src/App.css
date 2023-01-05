@@ -166,12 +166,12 @@ button:active {
 .results {
   background-color: #202124;
   width: 100%;
-  padding: 15vh 10vw;
+  padding: 10vh 10vw;
   min-height: 100vh;
   justify-content: space-around;
   margin: 0 auto;
   position: relative;
-  top: 400px;
+  top: 0;
 }
 
 @media (max-width: 767px) {

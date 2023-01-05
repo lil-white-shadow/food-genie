@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import Nav from "./components/Nav";
@@ -15,23 +15,7 @@ export default function App() {
   const [nutrition, setNutrition] = useState("");
   const [inputError, setInputError] = useState(false);
   
-  const SearchRef = useRef()
-  const IngredientsRef = useRef()
-  const NutritionRef = useRef()
-  const AboutRef = useRef()
-  const ContactRef = useRef()
-
-  function goToComponent(ref) {
-    if(ref === SearchRef) {
-      setSearch('')
-      setIngredients('')
-      setNutrition('')
-    }
-    if(!inputError && ref.current !== undefined) {
-      ref.current.scrollIntoView({ behavior: 'auto' })
-    }
-  }
-
+  const [display, setDisplay] = useState('search');
 
   useEffect(() => {
     if (search !== "") {
@@ -50,6 +34,7 @@ export default function App() {
         .then((response) => {
           if(response.totalHits > 0) {
             setInputError(false);
+            setDisplay('ingredients');
 
             if(response.foods[0].ingredients) {
               let receivedIngredients = response.foods[0].ingredients.toLowerCase();
@@ -75,13 +60,6 @@ export default function App() {
             setNutrition('');
           }
         })
-        .then(() => {
-            if(!inputError) {
-              setTimeout(() => 
-                goToComponent(IngredientsRef)
-              , 0)
-            }
-        })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
@@ -99,11 +77,13 @@ export default function App() {
   return (
     <div className="app">
       {
-        search !== "" ? 
-        <Nav className="nav" goToComponent={goToComponent} AboutRef={AboutRef} ContactRef={ContactRef}/>
+        display !== 'search' ? 
+        <Nav className="nav" setDisplay={setDisplay} AboutRef="about" ContactRef="contact"/>
         : null
       }
-      <div ref={SearchRef} className="search">
+      {
+        display === 'search' ?         
+        <div className="search">
         <div className="title">
           <p>{title}</p>
         </div>
@@ -121,41 +101,53 @@ export default function App() {
         }
         <div className="buttonContainer">
           <button onClick={handleSubmit} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Search</button>
-          <button onClick={() => goToComponent(IngredientsRef)} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>I'm feeling hungry!</button>
+          <button onClick={() => setDisplay('ingredients')} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>I'm feeling hungry!</button>
         </div>
-      </div>
-      {ingredients.length > 0 ? (
-        <div ref={IngredientsRef} className="results">
+        </div>
+        : null
+      }
+      {
+        display === 'ingredients' ? 
+        <div className="results">
           <Card
             title='INGREDIENTS'
             search={search}
             content={ingredients}
             contentSource={source}
           />
-          <button onClick={() => goToComponent(SearchRef)}>Return to search</button>
-          <button onClick={() => goToComponent(NutritionRef)}>See Nutrition</button>
+          <button onClick={() => setDisplay('search')}>Return to search</button>
+          <button onClick={() => setDisplay('nutrition')}>See Nutrition</button>
 
         </div>
-      ) : null}
-      {nutrition.length > 0 ? (
-        <div ref={NutritionRef} className="results">
+        : null}
+      {
+        display === 'nutrition' ? (
+        <div className="results">
           <Card
             title='NUTRITION'
             content={nutrition}
             contentSource={source}
           />
-          <button onClick={() => goToComponent(SearchRef)}>Return to search</button>
-          <button onClick={() => goToComponent(IngredientsRef)}>See Ingredients</button>
+          <button onClick={() => setDisplay('search')}>Return to search</button>
+          <button onClick={() => setDisplay('ingredients')}>See Ingredients</button>
         </div>
       ) : null}
-      <div ref={AboutRef} className="results">
-        <About title={title}/>
-        <button onClick={() => goToComponent(SearchRef)}>Return to search</button>
-      </div>
-      <div ref={ContactRef} className="results">
-        <Contact title={title}/>
-        <button onClick={() => goToComponent(SearchRef)}>Return to search</button>
-      </div>
+      {
+        display === 'about' ?
+        <div className="results">
+          <About title={title}/>
+          <button onClick={() => setDisplay('search')}>Return to search</button>
+        </div>
+        : null
+      }
+      {
+        display === 'contact' ?
+        <div className="results">
+          <Contact title={title}/>
+          <button onClick={() => setDisplay('search')}>Return to search</button>
+        </div>
+        : null
+      }
     </div>
   );
 }
