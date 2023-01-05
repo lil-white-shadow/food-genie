@@ -96,11 +96,12 @@ export default function App() {
         </div>
         {
           inputError ? 
-          <p className="inputErrorMessage">Please check spelling or try searching a different item.</p>
+          <p className="inputErrorMessage">Please check spelling or search another item.</p>
           : null
         }
         <div className="buttonContainer">
           <button onClick={handleSubmit} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Search</button>
+
         </div>
         </div>
         : null
