@@ -15,6 +15,9 @@ export default function App() {
   const [nutrition, setNutrition] = useState("");
   const [inputError, setInputError] = useState(false);
   
+  const [displayAbout, setDisplayAbout] = useState(false);
+  const [displayContact, setDisplayContact] = useState(false);
+  
   const SearchRef = useRef()
   const IngredientsRef = useRef()
   const NutritionRef = useRef()
@@ -23,11 +26,12 @@ export default function App() {
 
   function goToComponent(ref) {
     if(ref === SearchRef) {
+      setSearch('')
       setIngredients('')
       setNutrition('')
     }
     if(!inputError && ref.current !== undefined) {
-      ref.current.scrollIntoView({ behavior: 'smooth' })
+      ref.current.scrollIntoView({ behavior: 'auto' })
     }
   }
 
@@ -97,7 +101,11 @@ export default function App() {
 
   return (
     <div className="app">
-      <Nav className="nav" search={search} goToComponent={goToComponent} AboutRef={AboutRef} ContactRef={ContactRef}/>
+      {
+        search !== "" ? 
+        <Nav className="nav" goToComponent={goToComponent} AboutRef={AboutRef} ContactRef={ContactRef}/>
+        : null
+      }
       <div ref={SearchRef} className="search">
         <div className="title">
           <p>{title}</p>
