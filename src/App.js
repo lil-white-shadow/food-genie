@@ -15,9 +15,6 @@ export default function App() {
   const [nutrition, setNutrition] = useState("");
   const [inputError, setInputError] = useState(false);
   
-  const [displayAbout, setDisplayAbout] = useState(false);
-  const [displayContact, setDisplayContact] = useState(false);
-  
   const SearchRef = useRef()
   const IngredientsRef = useRef()
   const NutritionRef = useRef()
