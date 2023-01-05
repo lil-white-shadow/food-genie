@@ -101,7 +101,6 @@ export default function App() {
         }
         <div className="buttonContainer">
           <button onClick={handleSubmit} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>Search</button>
-          <button onClick={() => setDisplay('ingredients')} disabled={input === '' ? true : false} className={input === '' ? 'disabled' : null}>I'm feeling hungry!</button>
         </div>
         </div>
         : null

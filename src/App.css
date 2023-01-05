@@ -65,7 +65,7 @@ button {
 
 .search {
   background-color: #202124;
-  height: 90vh;
+  height: 100vh;
   width: 80%;
   color: white;
   display: flex;
@@ -79,26 +79,10 @@ button {
 .title {
   display: flex;
   font-size: min(10vw, 5rem);
-  position: relative;
-  gap: 1rem;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin-bottom: 5vh;
+  justify-content: center;
   font-weight: 600;
   text-shadow: 0 2px yellow;
-}
-
-.bulb {
-  height: 5rem;
-  width: 5rem;
-  position: relative;
-  top: 2rem;
-  border-radius: 5rem;
-  background-color: white;
-}
-
-.bulb:hover {
-  border: 20px solid;
-  background-color: yellow;
 }
 
 .inputContainer {
@@ -111,10 +95,10 @@ button {
 
 input {
   width: min(80%, 600px);
-  height: 3rem;
+  height: 2rem;
   font-size: 1.5rem;
-  padding: 0 2rem;
-  border-radius: 2rem;
+  padding: 0 1rem;
+  border-radius: 1em;
   border: 1px solid white;
   background-color: transparent;
   color: white;
@@ -159,7 +143,6 @@ input:focus {
 }
 
 button:active {
-  /* scale: 0.95; */
   box-shadow: none;
 }
 
@@ -167,11 +150,17 @@ button:active {
   background-color: #202124;
   width: 100%;
   padding: 10vh 10vw;
-  min-height: 100vh;
+  min-height: 90vh;
   justify-content: space-around;
   margin: 0 auto;
   position: relative;
   top: 0;
+}
+
+.buttonContainer button {
+  /* margin: 10px;
+  padding: 5px; */
+  margin-top: -10px;
 }
 
 @media (max-width: 767px) {
@@ -194,19 +183,17 @@ button:active {
     padding-left: 0;
   }
 
-  input {
-    height: 2rem;
-    padding: 0 1rem;
-  }
-
   .buttonContainer {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    width: fit-content;
   }
 
   .buttonContainer button {
-    margin: 10px;
+    /* margin: 10px;
+    padding: 5px; */
+    margin-top: -10px;
   }
 
  .buttonContainer button.disabled:active {
@@ -219,12 +206,16 @@ button:active {
   }
   
   .results {
-    margin-top: 20vh;
     padding: 40px;
   }
 
-  .cardTitle {
-    padding-top: 50px;
+  .card form input {
+    font-size: 1rem;
+  }
+
+  .card form p textarea {
+    font-size: 1rem;
+    height: 150px;
   }
 }
 
@@ -251,7 +242,7 @@ button:active {
 }
 
 .cardTitle {
-  font-size: min(3rem, 10vw);
+  font-size: min(3rem, 8vw);
   color: yellow;
   opacity: 70%;
   font-weight: 100;
