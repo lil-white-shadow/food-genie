@@ -41,6 +41,11 @@ body {
   text-shadow: 0 1px yellow;
 }
 
+.nav button.logo:hover {
+  cursor: default;
+  color: white;
+}
+
 button {
   cursor: pointer;
   background-color: #202124;
@@ -49,9 +54,9 @@ button {
 
 .nav button {
   border: none;
-  text-decoration: underline;
   cursor: pointer;
-  padding: 0 0 0 20px;
+  padding: 7px 0;
+  margin-left: 20px;
   font-size: min(1.5rem, 5vw);
 }
 
@@ -85,6 +90,14 @@ button {
   text-shadow: 0 2px yellow;
 }
 
+.title:hover {
+  cursor: pointer;
+  color: yellow;
+}
+
+.title:active {
+}
+
 .inputContainer {
   width: 100%;
   display: flex;
@@ -95,9 +108,9 @@ button {
 
 input {
   width: min(80%, 600px);
-  height: 2rem;
-  font-size: 1.5rem;
-  padding: 0 1rem;
+  height: 2.5rem;
+  font-size: 1.6rem;
+  padding: 0 1.2rem;
   border-radius: 1em;
   border: 1px solid white;
   background-color: transparent;

@@ -64,6 +64,10 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
+  useEffect(() => {
+    console.log("content height: " + window.document.body.offsetHeight + ", view height: " + window.innerHeight);
+  }, [display])
+
   function handleInput(event) {
     setInput(event.target.value);
     setInputError(false);
@@ -78,14 +82,14 @@ export default function App() {
     <div className="app">
       {
         display !== 'search' ? 
-        <Nav className="nav" setDisplay={setDisplay} AboutRef="about" ContactRef="contact"/>
+        <Nav className="nav" setDisplay={setDisplay} display={display} AboutRef="about" ContactRef="contact"/>
         : null
       }
       {
         display === 'search' ?         
         <div className="search">
         <div className="title">
-          <p>{title}</p>
+          <p onClick={() => setDisplay('about')}>{title}</p>
         </div>
         <div className="inputContainer">
           <input
@@ -154,7 +158,6 @@ export default function App() {
 
 /* 
 Future additions:
-- Routing for Results, About, Contact
 - Near me - google map results for restaurants or stores
 - Clip content for mobile with "Read more..."
 */
