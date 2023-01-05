@@ -161,13 +161,11 @@ export default function App() {
 }
 
 /* 
-Components
-1. Home - Search input for any dish or ingredient
-2. Home - buttons = ingredients, nutrition, near me
-3. Ingredients - ingredients card
-4. Nutrition - nutrition info card
-5. Near me - google map results for restaurants or stores
-
+To-do before publishing:
 - hide api keys 
-- add home, about, contact us
+
+Future additions:
+- Near me - google map results for restaurants or stores
+- Routing for Results, About, Contact
+- Clip content for mobile with "Read more..."
 */
