@@ -35,7 +35,7 @@ export default function App() {
 
   useEffect(() => {
     if (search !== "") {
-      let key = "rO88pi0us05QoIvMAigT0J7ZWLUiSDKdeq1owQac";
+      let key = process.env.REACT_APP_USDA_API_KEY;
   
       let endpoint =
         "https://api.nal.usda.gov/fdc/v1/foods/search?" +
