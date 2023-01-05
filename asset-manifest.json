@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/food-genie/static/css/main.65d9030d.css",
+    "main.js": "/food-genie/static/js/main.156d2086.js",
+    "static/js/787.88ff32c0.chunk.js": "/food-genie/static/js/787.88ff32c0.chunk.js",
+    "index.html": "/food-genie/index.html",
+    "main.65d9030d.css.map": "/food-genie/static/css/main.65d9030d.css.map",
+    "main.156d2086.js.map": "/food-genie/static/js/main.156d2086.js.map",
+    "787.88ff32c0.chunk.js.map": "/food-genie/static/js/787.88ff32c0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.65d9030d.css",
+    "static/js/main.156d2086.js"
+  ]
+}
