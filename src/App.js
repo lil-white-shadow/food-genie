@@ -119,8 +119,8 @@ export default function App() {
             content={ingredients}
             contentSource={source}
           />
-          <button onClick={() => setDisplay('search')}>Return to search</button>
           <button onClick={() => setDisplay('nutrition')}>See Nutrition</button>
+          <button className="returnButton" onClick={() => setDisplay('search')}>Return to search</button>
 
         </div>
         : null}
@@ -132,15 +132,15 @@ export default function App() {
             content={nutrition}
             contentSource={source}
           />
-          <button onClick={() => setDisplay('search')}>Return to search</button>
           <button onClick={() => setDisplay('ingredients')}>See Ingredients</button>
+          <button className="returnButton" onClick={() => setDisplay('search')}>Return to search</button>
         </div>
       ) : null}
       {
         display === 'about' ?
         <div className="results">
           <About title={title}/>
-          <button onClick={() => setDisplay('search')}>Return to search</button>
+          <button className="returnButton" onClick={() => setDisplay('search')}>Return to search</button>
         </div>
         : null
       }
@@ -148,7 +148,7 @@ export default function App() {
         display === 'contact' ?
         <div className="results">
           <Contact title={title}/>
-          <button onClick={() => setDisplay('search')}>Return to search</button>
+          <button className="returnButton" onClick={() => setDisplay('search')}>Return to search</button>
         </div>
         : null
       }

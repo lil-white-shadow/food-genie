@@ -303,3 +303,8 @@ button:active {
   width: min(50%, 150px);
   margin: 20px 10px;
 }
+
+.returnButton {
+  color: black;
+  background-color: white;
+}
